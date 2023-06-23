@@ -7,57 +7,45 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 
+import Checkbox from '@mui/material/Checkbox';
 
-export const TasksList = () => {
-    const data = [
-        {
-            task: 'Correr',
-            description: 'Salir a correr a las 18hrs',
-            checkBox: 'check',
-            delete: 'delete',
-        },
-        {
-            task: 'Correr1',
-            description: 'Salir a correr a las 18hrs',
-            checkBox: 'check',
-            delete: 'delete',
-        },
-        {
-            task: 'Correr2',
-            description: 'Salir a correr a las 18hrs',
-            checkBox: 'check',
-            delete: 'delete',
-        }
-    ]
+import { ITask } from "../interfaces/task.interface";
 
+
+export const TasksList = ({ tasks }: { tasks: ITask[] }) => {
     return(
         <div className="TasksList">
             <Box 
             sx={{
                 border: 1,
                 borderColor: 'gray',
-                height: '600px',
+                height: '550px',
             }}>
-                <Table>
+                <Table size="small">
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{width: ''}}>Tasks</TableCell>
-                            <TableCell style={{width: ''}}>Description</TableCell>
-                            <TableCell align="right" style={{width: '1px'}}>a</TableCell>
-                            <TableCell align="right" style={{width: '1px'}}>a</TableCell>
+                            <TableCell colSpan={1} style={{width: '', fontWeight: 'bold'}}>Task</TableCell>
+                            <TableCell colSpan={3} style={{width: '', fontWeight: 'bold'}}>Description</TableCell>
+                            <TableCell colSpan={1} align="right" style={{width: '1px'}}></TableCell>
+                            <TableCell colSpan={1} align="right" style={{width: '1px'}}></TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
-                        {
-                            data.map((item, index) => (
-                                <TableRow key={index}>
-                                    <TableCell>{item.task}</TableCell>
-                                    <TableCell>{item.description}</TableCell>
-                                    <TableCell align="right" style={{width: '1px'}}>{item.checkBox}</TableCell>
-                                    <TableCell align="right" style={{width: '1px'}}>{item.delete}</TableCell>
-                                </TableRow>
-                            ))
-                        }
+                    <TableBody
+                        sx={{
+                            "& .MuiTableCell-root": {
+                              paddingY: "0.1px", 
+                            },
+                          }}>
+                            {
+                                tasks.map((item, index) => (
+                                    <TableRow key={index}>
+                                        <TableCell colSpan={1}>{item.title}</TableCell>
+                                        <TableCell colSpan={3}>{item.description}</TableCell>
+                                        <TableCell colSpan={1} align="right" style={{width: '1px'}}><Checkbox checked={item.checkbox}/></TableCell>
+                                        <TableCell colSpan={1} align="right" style={{width: '1px'}}>{}</TableCell>
+                                    </TableRow>
+                                ))
+                            }
                     </TableBody>
                 </Table>
             </Box>
