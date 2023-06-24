@@ -16,7 +16,6 @@ export const ToDo = () => {
     const [focusTitle, setFocusTitle] = useState<boolean>(false);
     const h2TitleRef = useRef<HTMLInputElement>(null);
 
-    const inputTaskRef = useRef<HTMLInputElement>(null);
     const inputDescriptionRef = useRef<HTMLInputElement>(null);
 
     const initialState: ITask[] = [];
@@ -24,10 +23,10 @@ export const ToDo = () => {
     const reducer = (state: ITask[], action: IAction): ITask[] => {
         switch (action.type) {
             case 'add_task': {
-                console.log('add', action.title, action.description)
+                console.log('add',  action.description)
                 return [
                     ...state,
-                    { title: action.title, description: action.description, checkbox: false }
+                    { description: action.description, checkbox: false }
                 ]
             } 
             default: {
@@ -42,13 +41,11 @@ export const ToDo = () => {
         e.preventDefault();
         dispatch({
             type: 'add_task',
-            title: inputTaskRef.current?.value,
             description: inputDescriptionRef.current?.value,
             checkbox: false
         });
     
-        if (inputTaskRef.current && inputDescriptionRef.current) {
-            inputTaskRef.current.value = '';
+        if (inputDescriptionRef.current) {
             inputDescriptionRef.current.value = '';
         }
     }
@@ -83,11 +80,8 @@ export const ToDo = () => {
                 </div>
                 <div className="add-new-task" style={{ marginBottom: '40px' }}>
                     <Grid container spacing={2} style={{ alignItems: 'center' }}>
-                        <Grid item xs={4}>
-                            <TextField inputRef={inputTaskRef} id="add-task" label='Task' variant="standard"></TextField>
-                        </Grid>
-                        <Grid item xs={7}>
-                            <TextField inputRef={inputDescriptionRef} id="add-description" label='Description' variant="standard" style={{ display: 'flex' }}></TextField>
+                        <Grid item xs={11}>
+                            <TextField inputRef={inputDescriptionRef} id="add-task" label='New Task' variant="standard" style={{ display: 'flex' }}></TextField>
                         </Grid>
                         <Grid item xs={1}>
                             <IconButton onClick={handleSubmit}>

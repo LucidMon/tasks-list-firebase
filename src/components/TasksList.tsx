@@ -24,8 +24,7 @@ export const TasksList = ({ tasks }: { tasks: ITask[] }) => {
                 <Table size="small">
                     <TableHead>
                         <TableRow>
-                            <TableCell colSpan={1} style={{width: '', fontWeight: 'bold'}}>Task</TableCell>
-                            <TableCell colSpan={3} style={{width: '', fontWeight: 'bold'}}>Description</TableCell>
+                            <TableCell colSpan={4} style={{width: '', fontWeight: 'bold'}}>Tasks</TableCell>
                             <TableCell colSpan={1} align="right" style={{width: '1px'}}></TableCell>
                             <TableCell colSpan={1} align="right" style={{width: '1px'}}></TableCell>
                         </TableRow>
@@ -39,8 +38,7 @@ export const TasksList = ({ tasks }: { tasks: ITask[] }) => {
                             {
                                 tasks.map((item, index) => (
                                     <TableRow key={index}>
-                                        <TableCell colSpan={1}>{item.title}</TableCell>
-                                        <TableCell colSpan={3}>{item.description}</TableCell>
+                                        <TableCell colSpan={4}>{item.description}</TableCell>
                                         <TableCell colSpan={1} align="right" style={{width: '1px'}}><Checkbox checked={item.checkbox}/></TableCell>
                                         <TableCell colSpan={1} align="right" style={{width: '1px'}}>{}</TableCell>
                                     </TableRow>
