@@ -3,12 +3,12 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-/*Login*/
-.Login{
+/*ContainerLobby*/
+.ContainerLobby{
   position: relative;
 }
 
-.Login::before{
+.ContainerLobby::before{
   content: "";
   position: absolute;
   top: 0;
@@ -22,6 +22,7 @@ body {
   opacity: 0.4
 }
 
+/*Login*/
 .Login p{
   display: inline-block;
   background-image: linear-gradient(to top, #fddb27, #fddb27 3px, #c89f0e 3px, #c89f0e);
@@ -29,4 +30,3 @@ body {
   background-size: 100% 3px;
   background-repeat: no-repeat;
 }
-
