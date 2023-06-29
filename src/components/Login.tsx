@@ -5,10 +5,8 @@ import GoogleIcon from '@mui/icons-material/Google';
 
 import ImageLogo from '../assets/images/portapapeles-icon.jpg';
 
-
 export const Login = () => {
     return(
-        
         <div className="Login">
             <Grid container justifyContent={'center'}>
             <p style={{textAlign:'justify', fontStyle:'italic'}}>Keep track of your daily tasks and manage them efficiently!</p>
