@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from "@mui/material";
 import GoogleIcon from '@mui/icons-material/Google';
 
 import ImageLogo from '../assets/images/portapapeles-icon.jpg';
 
-export const Login = () => {
+export const FormLogin = () => {
     return(
-        <div className="Login">
+        <div className="FormLogin">
             <Grid container justifyContent={'center'}>
             <p style={{textAlign:'justify', fontStyle:'italic'}}>Keep track of your daily tasks and manage them efficiently!</p>
 
@@ -25,7 +26,9 @@ export const Login = () => {
             <Button variant="contained" style={{width:'60%'}}>Login</Button>
             <div className="text-create-account" style={{fontSize:'12px', marginTop:'15px'}}>
                 <span>Don't have account? </span>
-                <span style={{color:'#1976D2'}}>create a new account</span>
+                <span>
+                    <Link to={'register'} style={{color:'#1976D2', textDecoration:'none'}}>create a new account</Link>
+                </span>
             </div>
             
             <Grid container justifyContent={'center'} style={{width:'60%', marginTop:'10px'}}>

@@ -22,8 +22,8 @@ body {
   opacity: 0.4
 }
 
-/*Login*/
-.Login p{
+/*FromLogin*/
+.FormLogin p{
   display: inline-block;
   background-image: linear-gradient(to top, #fddb27, #fddb27 3px, #c89f0e 3px, #c89f0e);
   background-position: bottom;
