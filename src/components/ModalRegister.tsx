@@ -3,18 +3,23 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { Modal, Button, Box } from "@mui/material";
 
-export const ModalRegister = ({open,  image, title, description}: {open: boolean,  image: string, title: string, description: string}) => {
+export const ModalRegister = ({open, image, title, description}: {open: boolean,  image: string, title: string, description: string}) => {
     const [showModal, setShowModal] = useState<boolean>(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         if(open) {
-            const timeout = setTimeout(() => {
-                navigate('/');
-            }, 10000);
+            const timeout = setTimeout(() => {setShowModal(true)},2000);
             return () => clearTimeout(timeout);
         }
-    })
+    },[open])
+
+    useEffect(() => {
+        if(showModal) {
+            const timeout = setTimeout(() => {navigate('/')},7000);
+            return () => clearTimeout(timeout);
+        }
+    },[showModal, navigate])
     
 
     return(

@@ -31,10 +31,6 @@ export const FormRegister = () => {
         }
     }
 
-    const handleCloseModal = () => {
-        setOpenModal(false);
-    }
-
     return(
         <div className="FormRegister">
             <Grid container justifyContent={'center'}>
