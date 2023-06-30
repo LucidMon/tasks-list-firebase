@@ -30,3 +30,12 @@ body {
   background-size: 100% 3px;
   background-repeat: no-repeat;
 }
+
+/*FormRegister*/
+.FormRegister .text-desc{
+  display: inline-block;
+  background-image: linear-gradient(to top, #fddb27, #fddb27 3px, #c89f0e 3px, #c89f0e);
+  background-position: bottom;
+  background-size: 100% 3px;
+  background-repeat: no-repeat;
+}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, Grid, TextField } from "@mui/material";
 import GoogleIcon from '@mui/icons-material/Google';
 
-import ImageLogo from '../assets/images/portapapeles-icon.jpg';
+import { LogoApp } from "./LogoApp";
 
 export const FormLogin = () => {
     return(
@@ -13,9 +13,7 @@ export const FormLogin = () => {
             <p style={{textAlign:'justify', fontStyle:'italic'}}>Keep track of your daily tasks and manage them efficiently!</p>
 
             <div className="logo-app" style={{marginTop:'20px' ,display:'flex', alignItems:'center', fontSize:'50px', fontStyle:'italic'}}>
-                <span style={{textDecoration:'line-through', textDecorationThickness:'4px', textDecorationColor:'#EA4235'}}>To</span>
-                <img style={{width:'100px', height:'140px', marginRight:'10px', marginLeft:'10px'}} src={ImageLogo} alt="ImageLogo" />
-                <span>Do</span>
+                <LogoApp size={140}></LogoApp>
             </div>
 
             <span style={{fontSize:'25px', marginTop:'50px'}}>Welcome to the Task List App</span>
