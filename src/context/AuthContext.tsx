@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 import { auth } from '../firebase/firebase.config' 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
@@ -15,9 +15,17 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+    const [registerSucces, setRegisterSucces] = useState<boolean>(false);
+
     const register = async(email: string, password: string) => {
-        const res = await createUserWithEmailAndPassword(auth, email, password)
-        console.log(res)
+        try{
+            const res = await createUserWithEmailAndPassword(auth, email, password)
+            console.log(res)
+            setRegisterSucces(true);
+        } catch(error) {
+            console.log(error)
+            setRegisterSucces(false);
+        }
     }
 
     const login = async(email: string, password: string) => {
@@ -35,5 +43,5 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.log(res);
     }
 
-    return <authContext.Provider value = {{ register, login, loginWithGoogle, logout }}> { children } </authContext.Provider>
+    return <authContext.Provider value = {{ register, login, loginWithGoogle, logout, registerSucces }}> { children } </authContext.Provider>
 }
