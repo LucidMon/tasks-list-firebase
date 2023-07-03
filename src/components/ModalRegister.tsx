@@ -15,9 +15,6 @@ export const ModalRegister = ({open, image, title, description}: {open: boolean,
         }
     },[open, navigate])
     
-    const boxShadowStyle = showModal ? 24 : 0;
-    const bgcolorStyle = showModal ? '#fafafa' : '';
-
     return(
         <div className='ModalRegister'>
             {
@@ -32,8 +29,8 @@ export const ModalRegister = ({open, image, title, description}: {open: boolean,
                     width: 450,
                     height: 300,
                     borderRadius:2,
-                    bgcolor: bgcolorStyle,
-                    boxShadow: boxShadowStyle,
+                    bgcolor: '#fafafa',
+                    boxShadow: 24,
                     p: 5,
                 }}>
                     <img style={{height:'130px', width:'130px'}} src={image} alt="Saved"/>
