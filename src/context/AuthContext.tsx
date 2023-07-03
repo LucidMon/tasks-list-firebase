@@ -29,13 +29,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     const login = async(email: string, password: string) => {
-        const res = await signInWithEmailAndPassword(auth, email, password)
-        console.log(res)
+        try{
+            const res = await signInWithEmailAndPassword(auth, email, password)
+            console.log(res)
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     const loginWithGoogle = async() => {
-        const resGoogle = new GoogleAuthProvider()
-        return signInWithPopup(auth, resGoogle)
+        try{
+            const resGoogle = new GoogleAuthProvider()
+            await signInWithPopup(auth, resGoogle)
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     const logout = async() => {
