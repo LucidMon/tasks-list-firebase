@@ -9,22 +9,20 @@ export const ModalRegister = ({open, image, title, description}: {open: boolean,
 
     useEffect(() => {
         if(open) {
-            const timeout = setTimeout(() => {setShowModal(true)},2000);
-            return () => clearTimeout(timeout);
-        }
-    },[open])
-
-    useEffect(() => {
-        if(showModal) {
+            setTimeout(() =>{setShowModal(true)},1000);
             const timeout = setTimeout(() => {navigate('/')},7000);
             return () => clearTimeout(timeout);
         }
-    },[showModal, navigate])
+    },[open, navigate])
     
+    const boxShadowStyle = showModal ? 24 : 0;
+    const bgcolorStyle = showModal ? '#fafafa' : '';
 
     return(
         <div className='ModalRegister'>
-            <Modal open={open} >
+            {
+                (showModal)?
+                (<Modal open={open} >
                 <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'}
                 sx={{
                     position: 'absolute',
@@ -34,8 +32,8 @@ export const ModalRegister = ({open, image, title, description}: {open: boolean,
                     width: 450,
                     height: 300,
                     borderRadius:2,
-                    bgcolor: '#fafafa',
-                    boxShadow: 24,
+                    bgcolor: bgcolorStyle,
+                    boxShadow: boxShadowStyle,
                     p: 5,
                 }}>
                     <img style={{height:'130px', width:'130px'}} src={image} alt="Saved"/>
@@ -45,7 +43,11 @@ export const ModalRegister = ({open, image, title, description}: {open: boolean,
                         <Button variant="contained" size='small' style={{width:'100px'}}>Ok</Button>
                     </Link>
                 </Box>
-            </Modal>
+            </Modal>)
+            :
+            (null)
+            }
+            
         </div>
     )
 }
