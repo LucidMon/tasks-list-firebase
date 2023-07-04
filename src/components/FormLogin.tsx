@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from "../context/AuthContext";
 
@@ -10,13 +10,21 @@ import { LogoApp } from "./LogoApp";
 
 export const FormLogin = () => {
     const auth = useAuth();
+    const navigate = useNavigate();
 
     const [emailLogin, setEmailLogin] = useState<string>('');
     const [passwordLogin, setPasswordLogin] = useState<string>('');
-
+    
     const handleLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         auth.login(emailLogin, passwordLogin);
+
+        if(auth.user){
+            console.log('Usuario Logueado: ', auth.user);
+            navigate('/lobby');
+        } else {
+            console.log('error al inicio de sesion');
+        }
     }
 
     const handleLoginGoogle = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
