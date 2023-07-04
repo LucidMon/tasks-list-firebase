@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { AppBar, Toolbar, TextField, Box, Avatar, Grid } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
+import { LeftNavbar } from "./LeftNavbar";
 
 export const Navbar = () => {
+    const [showLeftNavbar, setShowLeftNavbar] = useState<boolean>(true);
+
+    const handleShowLeft = () => {
+        setShowLeftNavbar(!showLeftNavbar);
+    }
+
     return(
         <div className="Navbar">
             <AppBar position="static" sx={{bgcolor:'#d9d9d9', color:'black'}}>
@@ -18,7 +25,8 @@ export const Navbar = () => {
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            sx={{ mr: 2 }} 
+                            sx={{ mr: 2 }}
+                            onClick={handleShowLeft} 
                             >
                                 <MenuIcon/>
                             </IconButton>
@@ -73,6 +81,8 @@ export const Navbar = () => {
                     </Grid>
                 </Toolbar>
             </AppBar>
+
+            <LeftNavbar showLeftNavbar={showLeftNavbar}></LeftNavbar>
         </div>
     )
 }
