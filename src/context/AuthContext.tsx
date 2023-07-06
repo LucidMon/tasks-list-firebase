@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             const res = await createUserWithEmailAndPassword(auth, email, password)
             console.log(res)
             setRegisterSucces(true);
-        } catch(error) {
+        } catch (error) {
             console.log(error)
             setRegisterSucces(false);
         }
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         try{
             const res = await signInWithEmailAndPassword(auth, email, password)
             console.log(res)
-        } catch(error) {
+        } catch (error) {
             console.log(error)
         }
     }
@@ -61,14 +61,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         try{
             const resGoogle = new GoogleAuthProvider()
             await signInWithPopup(auth, resGoogle)
-        } catch(error) {
+        } catch (error) {
             console.log(error)
         }
     }
 
     const logout = async() => {
-        const res = await signOut(auth)
-        console.log(res);
+        try{
+            const res = await signOut(auth)
+            console.log(res);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
