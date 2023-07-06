@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import { LogoApp } from "./LogoApp";
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import { ModalLogout } from "./ModalLogout";
 
-export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar:boolean}) => {
+export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar: boolean}) => {
+    const [openModal, setOpenModal] = useState<boolean>(false);
 
+    const handleModal = () => {
+        setOpenModal((prevOpenModal) => !prevOpenModal);
+    }
 
     return(
         <div className="LeftNavbar">
@@ -32,6 +38,25 @@ export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar:boolean}) => {
                         <LogoApp size={60}/>
                     </Box>
                 </Grid>
+                
+                
+                <Grid justifyContent={'center'} display={'flex'} alignItems={'center'} marginTop={2}>
+                    <Button variant="text" disableRipple sx={{
+                            color:'white',
+                            width:'90%',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    color: '#EA4235'
+                                }
+                        }}
+                    onClick={handleModal}
+                    >
+                        <LogoutOutlinedIcon></LogoutOutlinedIcon>
+                        Logout
+                    </Button>
+                </Grid>
+                <ModalLogout openModal={openModal} onClose={handleModal}></ModalLogout>
+
             </Box>
         </div>
     )
