@@ -4,6 +4,7 @@ import { Box, Grid, Button } from '@mui/material';
 import { LogoApp } from "./LogoApp";
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { ModalLogout } from "./ModalLogout";
+import { PapersList } from "./PapersList";
 
 export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar: boolean}) => {
     const [openModal, setOpenModal] = useState<boolean>(false);
@@ -13,7 +14,7 @@ export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar: boolean}) => {
     }
 
     return(
-        <div className="LeftNavbar">
+        <>
             <Box sx={{
                 width: (showLeftNavbar) ? 300 : 0,
                 height: `calc(100vh - 64px)`,
@@ -24,7 +25,7 @@ export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar: boolean}) => {
                 
                 }}
             >
-                <Grid justifyContent={'center'} display={'flex'} paddingTop={3}>
+                <Grid justifyContent={'center'} display={'flex'} marginBottom={3} paddingTop={3}>
                     <Box sx={{
                         backgroundColor: '#ffffff',
                         width: 200,
@@ -38,9 +39,13 @@ export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar: boolean}) => {
                         <LogoApp size={60}/>
                     </Box>
                 </Grid>
+
+                <Grid justifyContent={'center'} display={'flex'} alignItems={'center'}>
+                    <PapersList></PapersList>
+                </Grid>
                 
                 
-                <Grid justifyContent={'center'} display={'flex'} alignItems={'center'} marginTop={2}>
+                <Grid justifyContent={'center'} display={'flex'} alignItems={'center'} marginTop={3}>
                     <Button variant="text" disableRipple sx={{
                             color:'white',
                             width:'90%',
@@ -58,6 +63,6 @@ export const LeftNavbar = ({showLeftNavbar}: {showLeftNavbar: boolean}) => {
                 <ModalLogout openModal={openModal} onClose={handleModal}></ModalLogout>
 
             </Box>
-        </div>
+        </>
     )
 }
