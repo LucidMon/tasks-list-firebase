@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { Avatar, MenuItem, Select, TextField } from "@mui/material";
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 import { ICountry } from "../interfaces/countries.interface";
 
 export const UserInfoRegister = () => {
@@ -53,6 +58,10 @@ export const UserInfoRegister = () => {
                     </MenuItem>
                 ))}
             </Select>
+
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker />
+            </LocalizationProvider>
         </>
     )
 }
